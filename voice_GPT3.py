@@ -4,7 +4,6 @@ import speech_recognition as sr
 import time
 
 # Set OpenAI API key
-onpenai.api_key = ""
 
 # Initialize the text-to-speach engine
 
@@ -13,7 +12,7 @@ engine = pyttsx3.init()
 
 def transcribe_audio_to_text(filename):
     recognizer = sr.Recognizer()
-    with sr, AudioFile(filename) as source:
+    with sr.AudioFile(filename) as source:
         audio = recognizer.record(source)
     try:
         return recognizer.recognize_google(audio)
@@ -39,7 +38,7 @@ def speak_text(text):
 
 
 def main():
-    while true:
+    while True:
         # wait for user to say "genius"
         print("Say 'Genius' to strat recording your question...")
         with sr.Microphone() as source:
