@@ -4,6 +4,7 @@ import speech_recognition as sr
 import time
 
 # Set OpenAI API key
+openai.api_key = "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"
 
 # Initialize the text-to-speach engine
 
@@ -40,7 +41,7 @@ def speak_text(text):
 def main():
     while True:
         # wait for user to say "genius"
-        print("Say 'Genius' to strat recording your question...")
+        print("Say 'Genius' to start recording your question...")
         with sr.Microphone() as source:
             recognizer = sr.Recognizer()
             audio = recognizer.listen(source)
@@ -61,11 +62,11 @@ def main():
                         # Transcribe audio text
                         text = transcribe_audio_to_text(filename)
                         if text:
-                            print("You said: {text}")
+                            print(f"You said: {text}")
 
                             # Generate response using GPT-3
                             response = generate_response(text)
-                            print("GPT-3 says: {response}")
+                            print(f"GPT-3 says: {response}")
 
                             # Read response using text-to-speech
                             speak_text(response)
